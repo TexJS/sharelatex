@@ -2,7 +2,7 @@ version: '2'
 services:
     sharelatex:
         restart: always
-        image: sharelatex/sharelatex
+        image: texjs/sharelatex
         container_name: sharelatex
         depends_on:
             - mongo
@@ -19,7 +19,7 @@ services:
             SHARELATEX_MONGO_URL: mongodb://mongo/sharelatex
             SHARELATEX_REDIS_HOST: redis
             SHARELATEX_APP_NAME: Our ShareLaTeX
-            
+
             #Set for SSL via nginx-proxy
             #VIRTUAL_HOST: 103.112.212.22
 
@@ -33,14 +33,14 @@ services:
 
             # SHARELATEX_EMAIL_FROM_ADDRESS: "team@sharelatex.com"
 
-            # SHARELATEX_EMAIL_AWS_SES_ACCESS_KEY_ID: 
-            # SHARELATEX_EMAIL_AWS_SES_SECRET_KEY: 
+            # SHARELATEX_EMAIL_AWS_SES_ACCESS_KEY_ID:
+            # SHARELATEX_EMAIL_AWS_SES_SECRET_KEY:
 
             # SHARELATEX_EMAIL_SMTP_HOST: smtp.mydomain.com
             # SHARELATEX_EMAIL_SMTP_PORT: 587
             # SHARELATEX_EMAIL_SMTP_SECURE: false
-            # SHARELATEX_EMAIL_SMTP_USER: 
-            # SHARELATEX_EMAIL_SMTP_PASS: 
+            # SHARELATEX_EMAIL_SMTP_USER:
+            # SHARELATEX_EMAIL_SMTP_PASS:
             # SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH: true
             # SHARELATEX_EMAIL_SMTP_IGNORE_TLS: false
             # SHARELATEX_CUSTOM_EMAIL_FOOTER: "<div>This system is run by department x </div>"
@@ -51,11 +51,11 @@ services:
 
             # SANDBOXED_COMPILES:true
 
-            # SHARELATEX_LDAP_HOST: 'ldap://ldap.forumsys.com' 
-            # SHARELATEX_LDAP_DN: 'uid=:userKey,dc=example,dc=com' 
+            # SHARELATEX_LDAP_HOST: 'ldap://ldap.forumsys.com'
+            # SHARELATEX_LDAP_DN: 'uid=:userKey,dc=example,dc=com'
             # SHARELATEX_LDAP_BASE_SEARCH: 'dc=example,dc=com'
             # SHARELATEX_LDAP_FILTER: '(uid=:userKey)'
-            # SHARELATEX_LDAP_ADMIN_DN: 'cn=read-only-admin,dc=example,dc=com' 
+            # SHARELATEX_LDAP_ADMIN_DN: 'cn=read-only-admin,dc=example,dc=com'
             # SHARELATEX_LDAP_ADMIN_PW: password'
             # SHARELATEX_LDAP_ANONYMOUS: "false"
             # SHARELATEX_LDAP_EMAIL_ATT: "mail"
@@ -87,7 +87,7 @@ services:
             - 6379
         volumes:
             - ~/redis_data:/data
-            
+
 # nginx-proxy:
 #     image: jwilder/nginx-proxy
 #     container_name: nginx-proxy
