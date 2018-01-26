@@ -182,7 +182,7 @@ module.exports = (grunt) ->
 		checkMongoConnect: (callback = (error) ->) ->
 			grunt.log.write "Checking can connect to mongo"
 			mongojs = require("mongojs")
-			db = mongojs.connect(settings.mongo.url, ["tags"])
+			db = mongojs(settings.mongo.url, ["tags"])
 			db.runCommand { ping: 1 }, (err, res) ->
 				if !err and res.ok
 					grunt.log.write "OK."
@@ -196,7 +196,7 @@ module.exports = (grunt) ->
 				ShareLaTeX can not talk to the mongdb instance
 
 				Check the mongodb instance is running and accessible on env var SHARELATEX_MONGO_URL
-				
+
 				!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				"""
 				throw new Error("Can not connect to Mongodb")
