@@ -3,6 +3,7 @@ services:
     sharelatex:
         restart: always
         build: ../sharelatex-docker-image
+        # image: texjs/sharelatex
         container_name: sharelatex
         depends_on:
             - mongo

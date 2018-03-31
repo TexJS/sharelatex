@@ -196,7 +196,7 @@ module.exports = (grunt) ->
 				ShareLaTeX can not talk to the mongdb instance
 
 				Check the mongodb instance is running and accessible on env var SHARELATEX_MONGO_URL
-				
+
 				!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				"""
 				throw new Error("Can not connect to Mongodb")
