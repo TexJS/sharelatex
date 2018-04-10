@@ -8,12 +8,14 @@ services:
         depends_on:
             - mongo
             - redis
+            - openldap
         privileged: true
         ports:
             - 80:80
         links:
             - mongo
             - redis
+            - openldap
         volumes:
             - ~/sharelatex_data:/var/lib/sharelatex
             - ~/sharelatex_www:/var/www
@@ -103,6 +105,14 @@ services:
             - 6379
         volumes:
             - ~/redis_data:/data
+
+    openldap:
+        restart: always
+        image: rroemhild/test-openldap
+        container_name: openldap
+        privileged: true
+        ports:
+            - 389:389
 
 # nginx-proxy:
 #     image: jwilder/nginx-proxy
