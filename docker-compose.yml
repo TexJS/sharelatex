@@ -60,25 +60,16 @@ services:
             # SANDBOXED_COMPILES_HOST_DIR: '/var/clsi/compiles'
 
 
-            SHARELATEX_LDAP_URL: 'ldap://localhost:389'
-            SHARELATEX_LDAP_HOST: 'ldap://localhost:389'
+            SHARELATEX_LDAP_URL: 'ldap://openldap:389'
             SHARELATEX_LDAP_BIND_DN: 'cn=admin,dc=planetexpress,dc=com'
-            SHARELATEX_LDAP_DN: 'cn=admin,dc=planetexpress,dc=com'
-            SHARELATEX_LDAP_SEARCH_BASE: 'ou=people,dc=planetexpress,dc=com'
-            SHARELATEX_LDAP_BASE_SEARCH: 'ou=people,dc=planetexpress,dc=com'
-            SHARELATEX_LDAP_SEARCH_FILTER: '(uid=:username)'
-            SHARELATEX_LDAP_FILTER: '(uid=:username)'
-            SHARELATEX_LDAP_ADMIN_DN: 'cn=read-only-admin,dc=example,dc=com'
             SHARELATEX_LDAP_BIND_CREDENTIALS: 'GoodNewsEveryone'
-            SHARELATEX_LDAP_ADMIN_PW: 'GoodNewsEveryone'
-            SHARELATEX_LDAP_ANONYMOUS: "false"
+            SHARELATEX_LDAP_SEARCH_BASE: 'ou=people,dc=planetexpress,dc=com'
+            SHARELATEX_LDAP_SEARCH_FILTER: '(uid={{username}})'
+            SHARELATEX_LDAP_ANONYMOUS: 'false'
             SHARELATEX_LDAP_EMAIL_ATT: 'mail'
-            SHARELATEX_LDAP_EMAIL_ATT: "mail"
-            SHARELATEX_LDAP_NAME_ATT: 'cn'
             SHARELATEX_LDAP_NAME_ATT: 'cn'
             SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'
-            SHARELATEX_LDAP_LAST_NAME_ATT: "sn"
-            SHARELATEX_LDAP_PLACEHOLDER: "Username"
+            SHARELATEX_LDAP_PLACEHOLDER: 'Username'
             SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'
             # SHARELATEX_LDAP_TLS: "true"
             # SHARELATEX_LDAP_TLS_OPTS_REJECT_UNAUTH:
