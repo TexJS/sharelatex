@@ -2,7 +2,6 @@ version: '2'
 services:
     sharelatex:
         restart: always
-        # build: ../sharelatex-docker-image
         image: texjs/sharelatex
         container_name: sharelatex
         depends_on:
@@ -18,7 +17,6 @@ services:
             - openldap
         volumes:
             - ~/sharelatex_data:/var/lib/sharelatex
-            - ~/sharelatex_www:/var/www
             - /var/run/docker.sock:/var/run/docker.sock
         environment:
             SHARELATEX_MONGO_URL: mongodb://mongo/sharelatex
