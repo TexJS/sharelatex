@@ -7,16 +7,15 @@ services:
         depends_on:
             - mongo
             - redis
-            - openldap
         privileged: true
         ports:
             - 80:80
         links:
             - mongo
             - redis
-            - openldap
         volumes:
             - ~/sharelatex_data:/var/lib/sharelatex
+            # - ~/sharelatex_www:/var/www
             - /var/run/docker.sock:/var/run/docker.sock
         environment:
             SHARELATEX_MONGO_URL: mongodb://mongo/sharelatex
@@ -48,6 +47,18 @@ services:
             # SHARELATEX_EMAIL_SMTP_IGNORE_TLS: false
             # SHARELATEX_CUSTOM_EMAIL_FOOTER: "<div>This system is run by department x </div>"
 
+            SHARELATEX_LDAP_URL: 'ldap://ldap.forumsys.com'
+            SHARELATEX_LDAP_BIND_DN: 'uid={{username}},dc=example,dc=com'
+            SHARELATEX_LDAP_BIND_CREDENTIALS: '{{password}}'
+            SHARELATEX_LDAP_SEARCH_BASE: 'dc=example,dc=com'
+            SHARELATEX_LDAP_SEARCH_FILTER: '(uid={{username}})'
+            SHARELATEX_LDAP_ANONYMOUS: 'false'
+            SHARELATEX_LDAP_EMAIL_ATT: 'mail'
+            SHARELATEX_LDAP_NAME_ATT: 'givenName'
+            SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'
+            SHARELATEX_LDAP_PLACEHOLDER: 'Username'
+            SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'
+
             ################
             ## Server Pro ##
             ################
@@ -57,18 +68,6 @@ services:
             # SANDBOXED_COMPILES_SIBLING_CONTAINERS: 'true'
             # SANDBOXED_COMPILES_HOST_DIR: '/var/clsi/compiles'
 
-
-            SHARELATEX_LDAP_URL: 'ldap://openldap:389'
-            SHARELATEX_LDAP_BIND_DN: 'cn=admin,dc=planetexpress,dc=com'
-            SHARELATEX_LDAP_BIND_CREDENTIALS: 'GoodNewsEveryone'
-            SHARELATEX_LDAP_SEARCH_BASE: 'ou=people,dc=planetexpress,dc=com'
-            SHARELATEX_LDAP_SEARCH_FILTER: '(uid={{username}})'
-            SHARELATEX_LDAP_ANONYMOUS: 'false'
-            SHARELATEX_LDAP_EMAIL_ATT: 'mail'
-            SHARELATEX_LDAP_NAME_ATT: 'cn'
-            SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'
-            SHARELATEX_LDAP_PLACEHOLDER: 'Username'
-            SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'
             # SHARELATEX_LDAP_TLS: "true"
             # SHARELATEX_LDAP_TLS_OPTS_REJECT_UNAUTH:
             # SHARELATEX_LDAP_TLS_OPTS_CA_PATH: '["/var/one.pem", "/var/two.pem"]'
@@ -94,14 +93,6 @@ services:
             - 6379
         volumes:
             - ~/redis_data:/data
-
-    openldap:
-        restart: always
-        image: rroemhild/test-openldap
-        container_name: openldap
-        privileged: true
-        ports:
-            - 389:389
 
 # nginx-proxy:
 #     image: jwilder/nginx-proxy
