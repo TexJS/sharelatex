@@ -54,7 +54,7 @@ services:
             SHARELATEX_LDAP_SEARCH_FILTER: '(uid={{username}})'
             SHARELATEX_LDAP_ANONYMOUS: 'false'
             SHARELATEX_LDAP_EMAIL_ATT: 'mail'
-            SHARELATEX_LDAP_NAME_ATT: 'givenName'
+            SHARELATEX_LDAP_NAME_ATT: 'cn'
             SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'
             SHARELATEX_LDAP_PLACEHOLDER: 'Username'
             SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'
